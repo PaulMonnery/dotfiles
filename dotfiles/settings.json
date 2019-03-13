@@ -1,0 +1,34 @@
+{
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Flatland Monokai",
+    "editor.renderWhitespace": "all",
+    "git.confirmSync": false,
+    "editor.fontSize": 15,
+    "terminal.integrated.fontSize": 16,
+    "editor.minimap.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "epitech-c-cpp-headers.username": "paul.monnery",
+    "epitech-c-cpp-headers.login": "paul.monnery",
+    "epitech-c-cpp-headers.headerType": "post2017",
+    "epitech-c-cpp-headers.usePragmaOnce": false,
+    "epitech-c-cpp-headers.autoGenerateClasses": false,
+    "editor.rulers": [
+        80
+    ],
+    "files.exclude": {
+        "**/*.o": true,
+        "**/*.gcno": true,
+        "**/*.gcna": true
+    },
+    "window.menuBarVisibility": "toggle",
+    "search.location": "panel",
+    "C_Cpp.updateChannel": "Insiders",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.tabSize": 2,
+    "explorer.confirmDelete": false,
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "gitlens.currentLine.enabled": false, // in modern version
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.recentChange.enabled": false,
+}

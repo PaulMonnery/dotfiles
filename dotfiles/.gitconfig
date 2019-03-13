@@ -1,0 +1,5 @@
+[user]
+	name = Paul Monnery
+	email = paul.monnery@epitech.eu
+[credential]
+	helper = cache --timeout=3600
