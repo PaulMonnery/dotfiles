@@ -129,7 +129,7 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > oh-my-zsh.sh
-  sed -i "s:env zsh:exit:g" oh-my-zsh.sh
+  sed -i "s/env zsh/exit/g" oh-my-zsh.sh
   chmod 755 oh-my-zsh.sh
   ./oh-my-zsh.sh
   rm oh-my-zsh.sh
@@ -139,8 +139,8 @@ then
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
-    openssl enc -d -aes-256-cbc -in installation_script/dotfiles/.zshrc ~/.zshrc
-    openssl enc -d -aes-256-cbc -in installation_script/dotfiles/.zsh_history ~/.zshrc
+    openssl enc -d -aes-256-cbc -in installation_script/dotfiles/.zshrc -out ~/.zshrc
+    openssl enc -d -aes-256-cbc -in installation_script/dotfiles/.zsh_history -out ~/.zsh_rc
     yes | cp -rfv installation_script/dotfiles/.gitconfig ~
     yes | cp -rfv installation_script/dotfiles/sunaku-zen.zsh-theme ~/.oh-my-zsh/themes
     sed -i "s/pmonnery/$USER/g" ~/.zshrc
