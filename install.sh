@@ -128,12 +128,9 @@ read -p "${YELLOW}installing oh-my-zsh? [y/n]${NORMAL} " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > oh-my-zsh.sh
-  sed -i "s/env zsh/exit/g" oh-my-zsh.sh
-  chmod 755 oh-my-zsh.sh
-  ./oh-my-zsh.sh
-  rm oh-my-zsh.sh
-
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch || {
+    echo "Could not install Oh My Zsh" >/dev/stderr
+  }
   echo
   read -p "${YELLOW}Importing zsh configuration's files? (requires openssl's decrypt's password) [n]${NORMAL} " -n 1 -r
   echo
