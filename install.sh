@@ -129,7 +129,7 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch || {
-    echo "Could not install Oh My Zsh" >/dev/stderr
+    echo "Could not install Oh My Zsh" > /dev/stderr
   }
   echo
   read -p "${YELLOW}Importing zsh configuration's files? (requires openssl's decrypt's password) [n]${NORMAL} " -n 1 -r
@@ -141,6 +141,30 @@ then
     yes | cp -rfv installation_script/dotfiles/.gitconfig ~
     yes | cp -rfv installation_script/dotfiles/sunaku-zen.zsh-theme ~/.oh-my-zsh/themes
     sed -i "s/pmonnery/$USER/g" ~/.zshrc
+
+    install_alias = sed -n -e '/^alias install/p' ~/.zshrc
+    remove_alias = sed -n -e '/^alias remove/p' ~/.zshrc
+    update_alias = sed -n -e '/^alias upgrade/p' ~/.zshrc
+
+    case "$os" in
+    archlinux)
+      sed -i "s/$install_alias/alias install='sudo pacman -S'/g" ~/.zshrc
+      sed -i "s/$remove_alias/alias remove='sudo pacman -Rsc'/g" ~/.zshrc
+      sed -i "s/$install_alias/alias upgrade='sudo pacman -Suy'/g" ~/.zshrc
+      ;;
+    fedora)
+      sed -i "s/$install_alias/alias install='sudo dnf install'/g" ~/.zshrc
+      sed -i "s/$remove_alias/alias remove='sudo dnf remove'/g" ~/.zshrc
+      sed -i "s/$install_alias/alias upgrade='sudo dnf upgrade -y'/g" ~/.zshrc
+      sudo dnf install
+      ;;
+    debian)
+      sed -i "s/$install_alias/alias install='sudo apt install'/g" ~/.zshrc
+      sed -i "s/$remove_alias/alias remove='sudo apt remove'/g" ~/.zshrc
+      sed -i "s/$install_alias/alias upgrade='sudo apt upgrade -y'/g" ~/.zshrc
+      ;;
+  esac
+
     handle_error $?
   fi
 fi
