@@ -103,7 +103,7 @@ script_init
 
 #########################################################################################################
 
-git clone https://github.com/PaulMonnery/installation_script.git
+git clone https://github.com/PaulMonnery/personnal_conf.git
 
 read -p "${YELLOW}Is you epitech login ${GREEN}$EPITECH_LOGIN${YELLOW} ? [y/n]${NORMAL} " -n 1 -r
 echo
@@ -131,10 +131,10 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   read -p "${YELLOW}Importing zsh configuration's files? (requires openssl's decrypt's password) [n]${NORMAL} " -n 1 -r
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
-    openssl enc -d -aes-256-cbc -in installation_script/dotfiles/.zshrc -out ~/.zshrc
-    openssl enc -d -aes-256-cbc -in installation_script/dotfiles/.zsh_history -out ~/.zsh_rc
-    yes | cp -rfv installation_script/dotfiles/.gitconfig ~
-    yes | cp -rfv installation_script/dotfiles/sunaku-zen.zsh-theme ~/.oh-my-zsh/themes
+    openssl enc -d -aes-256-cbc -in personnal_conf/dotfiles/.zshrc -out ~/.zshrc
+    openssl enc -d -aes-256-cbc -in personnal_conf/dotfiles/.zsh_history -out ~/.zsh_rc
+    yes | cp -rfv personnal_conf/dotfiles/.gitconfig ~
+    yes | cp -rfv personnal_conf/dotfiles/sunaku-zen.zsh-theme ~/.oh-my-zsh/themes
     sed -i "s/pmonnery/$USER/g" ~/.zshrc
 
     install_alias = sed -n -e '/^alias install/p' ~/.zshrc
@@ -168,10 +168,10 @@ echo
 read -p "${YELLOW}copying personnal emacs's configuration? [y/n]${NORMAL} " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  tar -zxvf installation_script/dotfiles/.emacs.d.tgz
-  mv .emacs.d installation_script/dotfiles
-  yes | cp -rf installation_script/dotfiles/.emacs.d ~
-  yes | cp -rfv installation_script/dotfiles/.emacs ~
+  tar -zxvf personnal_conf/dotfiles/.emacs.d.tgz
+  mv .emacs.d personnal_conf/dotfiles
+  yes | cp -rf personnal_conf/dotfiles/.emacs.d ~
+  yes | cp -rfv personnal_conf/dotfiles/.emacs ~
   handle_error $?
 fi
 
@@ -180,7 +180,7 @@ read -p "${YELLOW}geneating ssh key and blih? [y/n]${NORMAL} " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   ssh-keygen
-  sudo cp installation_script/scripts/blih /usr/bin/blih
+  sudo cp personnal_conf/scripts/blih /usr/bin/blih
   handle_error $?
   sudo chmod 755 /usr/bin/blih
   handle_error $?
