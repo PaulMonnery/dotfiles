@@ -33,8 +33,8 @@ then
   code --install-extension walter-ribeiro.full-react-snippets
   code --install-extension wmira.react-playground-vscode
 
-  curl -fsSL https://raw.github.com/PaulMonnery/installation_script/master/dotfiles/keybindings.json > ~/.config/Code/User/keybindings.json
-  curl -fsSL https://raw.github.com/PaulMonnery/installation_script/master/dotfiles/settings.json > ~/.config/Code/User/settings.json
+  curl -fsSL https://raw.github.com/PaulMonnery/personnal_conf/master/dotfiles/keybindings.json > ~/.config/Code/User/keybindings.json
+  curl -fsSL https://raw.github.com/PaulMonnery/personnal_conf/master/dotfiles/settings.json > ~/.config/Code/User/settings.json
 
 else
   exit 1
