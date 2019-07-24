@@ -137,26 +137,25 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     yes | cp -rfv personnal_conf/dotfiles/sunaku-zen.zsh-theme ~/.oh-my-zsh/themes
     sed -i "s/pmonnery/$USER/g" ~/.zshrc
 
-    install_alias = sed -n -e '/^alias install/p' ~/.zshrc
-    remove_alias = sed -n -e '/^alias remove/p' ~/.zshrc
-    update_alias = sed -n -e '/^alias upgrade/p' ~/.zshrc
+    install_alias=`sed -n -e '/^alias install/p' ~/.zshrc`
+    remove_alias=`sed -n -e '/^alias remove/p' ~/.zshrc`
+    update_alias=`sed -n -e '/^alias upgrade/p' ~/.zshrc`
 
     case "$os" in
     archlinux)
       sed -i "s/$install_alias/alias install='sudo pacman -S'/g" ~/.zshrc
       sed -i "s/$remove_alias/alias remove='sudo pacman -Rsc'/g" ~/.zshrc
-      sed -i "s/$install_alias/alias upgrade='sudo pacman -Suy'/g" ~/.zshrc
+      sed -i "s/$update_alias/alias upgrade='sudo pacman -Suy'/g" ~/.zshrc
       ;;
     fedora)
       sed -i "s/$install_alias/alias install='sudo dnf install'/g" ~/.zshrc
       sed -i "s/$remove_alias/alias remove='sudo dnf remove'/g" ~/.zshrc
-      sed -i "s/$install_alias/alias upgrade='sudo dnf upgrade -y'/g" ~/.zshrc
-      sudo dnf install
+      sed -i "s/$update_alias/alias upgrade='sudo dnf upgrade -y'/g" ~/.zshrc
       ;;
     debian)
       sed -i "s/$install_alias/alias install='sudo apt install'/g" ~/.zshrc
       sed -i "s/$remove_alias/alias remove='sudo apt remove'/g" ~/.zshrc
-      sed -i "s/$install_alias/alias upgrade='sudo apt upgrade -y'/g" ~/.zshrc
+      sed -i "s/$update_alias/alias upgrade='sudo apt upgrade -y'/g" ~/.zshrc
       ;;
     esac
 
