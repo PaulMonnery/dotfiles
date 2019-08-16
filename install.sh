@@ -73,9 +73,6 @@ function sys_upgrade() {
     return
   fi
   case "$os" in
-  opensuse)
-    sudo zypper -y update
-    ;;
   archlinux)
     sudo pacman --noconfirm -Syu
     ;;
@@ -85,9 +82,6 @@ function sys_upgrade() {
   debian)
     sudo apt-get -y update
     sudo apt-get -y upgrade
-    ;;
-  gentoo)
-    sudo emerge -u world
     ;;
   esac
   handle_error $?
