@@ -5,11 +5,6 @@ dir_tmp="/tmp/install"
 login=$1
 EPITECH_LOGIN=paul.monnery
 fake=0
-ESC="\033["
-C_RED=$ESC"0;31m"
-C_YELLOW=$ESC"0;33m"
-C_BWHITE=$ESC"1;37m"
-C_RST=$ESC"0m"
 
 if which tput >/dev/null 2>&1; then
   ncolors=$(tput colors)
@@ -37,7 +32,7 @@ function handle_error() {
   if test $result -eq 0; then
     return
   else
-    echo -en $C_RED"[Erreur]"$C_RST" lors de l'installation, voulez-vous arreter le script ? [O/n]  "
+    echo -en "$RED[Erreur]$NORMAL lors de l'installation, voulez-vous arreter le script ? [O/n]  "
     read stop_script
     case $stop_script in
     n | N) return ;;
@@ -131,9 +126,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     yes | cp -rfv personnal_conf/dotfiles/sunaku-zen.zsh-theme ~/.oh-my-zsh/themes
     sed -i "s/pmonnery/$USER/g" ~/.zshrc
 
-    install_alias=`sed -n -e '/^alias install/p' ~/.zshrc`
-    remove_alias=`sed -n -e '/^alias remove/p' ~/.zshrc`
-    update_alias=`sed -n -e '/^alias upgrade/p' ~/.zshrc`
+    install_alias=$(sed -n -e '/^alias install/p' ~/.zshrc)
+    remove_alias=$(sed -n -e '/^alias remove/p' ~/.zshrc)
+    update_alias=$(sed -n -e '/^alias upgrade/p' ~/.zshrc)
 
     case "$os" in
     archlinux)
