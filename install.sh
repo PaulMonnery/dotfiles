@@ -123,7 +123,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     openssl enc -d -aes-256-cbc -in personnal_conf/dotfiles/.zshrc -out ~/.zshrc
     openssl enc -d -aes-256-cbc -in personnal_conf/dotfiles/.zsh_history -out ~/.zsh_rc
     yes | cp -rfv personnal_conf/dotfiles/.gitconfig ~
-    yes | cp -rfv personnal_conf/dotfiles/sunaku-zen.zsh-theme ~/.oh-my-zsh/themes
+    curl https://raw.githubusercontent.com/AffanIndo/sunaku-zen/master/sunaku-zen.zsh-theme > ~/.oh-my-zsh/themes
     sed -i "s/pmonnery/$USER/g" ~/.zshrc
 
     install_alias=$(sed -n -e '/^alias install/p' ~/.zshrc)
