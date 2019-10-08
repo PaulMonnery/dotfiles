@@ -147,7 +147,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
       sed -i "s/$update_alias/alias upgrade='sudo apt upgrade -y'/g" ~/.zshrc
       ;;
     esac
-
     handle_error $?
   fi
 fi
@@ -168,6 +167,7 @@ read -p "${YELLOW}geneating ssh key and blih? [y/n]${NORMAL} " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   ssh-keygen
+  curl https://raw.githubusercontent.com/Epitech/dump/master/blih.py > personnal_conf/scripts/blih
   sudo cp personnal_conf/scripts/blih /usr/bin/blih
   handle_error $?
   sudo chmod 755 /usr/bin/blih
