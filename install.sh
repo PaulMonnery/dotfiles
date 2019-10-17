@@ -152,13 +152,23 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 echo
-read -p "${YELLOW}copying personnal emacs's configuration? [y/n]${NORMAL} " -n 1 -r
+read -p "${YELLOW}copying emacs personnal configuration? [y/n]${NORMAL} " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   tar -zxvf personnal_conf/dotfiles/.emacs.d.tgz
   mv .emacs.d personnal_conf/dotfiles
   yes | cp -rf personnal_conf/dotfiles/.emacs.d ~
   yes | cp -rfv personnal_conf/dotfiles/.emacs ~
+  handle_error $?
+fi
+
+echo
+read -p "${YELLOW}copying valgrind personnal configuration? [n]${NORMAL} " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  yes | cp -rf personnal_conf/dotfiles/.valgrindrc ~
+  yes | cp -rfv personnal_conf/dotfiles/.valgrind.suppress ~
+  sed -i "s/pmonnery/$USER/g" ~/.valgrindrc
   handle_error $?
 fi
 
