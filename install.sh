@@ -123,7 +123,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     openssl enc -d -aes-256-cbc -in personnal_conf/dotfiles/.zshrc -out ~/.zshrc
     openssl enc -d -aes-256-cbc -in personnal_conf/dotfiles/.zsh_history -out ~/.zsh_rc
     yes | cp -rfv personnal_conf/dotfiles/.gitconfig ~
-    curl https://raw.githubusercontent.com/AffanIndo/sunaku-zen/master/sunaku-zen.zsh-theme > ~/.oh-my-zsh/themes
+    curl https://raw.githubusercontent.com/AffanIndo/sunaku-zen/master/sunaku-zen.zsh-theme >~/.oh-my-zsh/themes
     sed -i "s/pmonnery/$USER/g" ~/.zshrc
 
     install_alias=$(sed -n -e '/^alias install/p' ~/.zshrc)
@@ -173,11 +173,20 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 echo
+read -p "${YELLOW}copying terminator personnal configuration? [y/n]${NORMAL} " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  mkdir -vp ~/.config/terminator
+  yes | cp -rf personnal_conf/dotfiles/.terminator_config ~/.config/terminator
+  handle_error $?
+fi
+
+echo
 read -p "${YELLOW}geneating ssh key and blih? [y/n]${NORMAL} " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   ssh-keygen
-  curl https://raw.githubusercontent.com/Epitech/dump/master/blih.py > personnal_conf/scripts/blih
+  curl https://raw.githubusercontent.com/Epitech/dump/master/blih.py >personnal_conf/scripts/blih
   sudo cp personnal_conf/scripts/blih /usr/bin/blih
   handle_error $?
   sudo chmod 755 /usr/bin/blih
