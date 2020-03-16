@@ -3,3 +3,5 @@
 	email = paul.monnery@epitech.eu
 [credential]
 	helper = cache --timeout=3600
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX

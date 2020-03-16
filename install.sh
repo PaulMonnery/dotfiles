@@ -122,31 +122,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     openssl enc -d -aes-256-cbc -in personnal_conf/dotfiles/.zsh_history -out ~/.zsh_history
     yes | cp -rfv personnal_conf/dotfiles/.gitconfig ~
+    yes | cp -rfv personnal_conf/dotfiles/.zshrc ~
+    yes | cp -rfv personnal_conf/dotfiles/.fzf.zsh ~
+    yes | cp -rfv personnal_conf/dotfiles/.yarnrc ~
     curl https://raw.githubusercontent.com/AffanIndo/sunaku-zen/master/sunaku-zen.zsh-theme > ~/.oh-my-zsh/themes/sunaku-zen.zsh-theme
     sed -i "s/pmonnery/$USER/g" ~/.zshrc
-
-    install_alias=$(sed -n -e '/^alias install/p' ~/.zshrc)
-    remove_alias=$(sed -n -e '/^alias remove/p' ~/.zshrc)
-    update_alias=$(sed -n -e '/^alias upgrade/p' ~/.zshrc)
-
-    case "$os" in
-    archlinux)
-      sed -i "s/$install_alias/alias install='sudo pacman -S'/g" ~/.zshrc
-      sed -i "s/$remove_alias/alias remove='sudo pacman -Rsc'/g" ~/.zshrc
-      sed -i "s/$update_alias/alias upgrade='sudo pacman -Suy'/g" ~/.zshrc
-      ;;
-    fedora)
-      sed -i "s/$install_alias/alias install='sudo dnf install'/g" ~/.zshrc
-      sed -i "s/$remove_alias/alias remove='sudo dnf remove'/g" ~/.zshrc
-      sed -i "s/$update_alias/alias upgrade='sudo dnf upgrade -y'/g" ~/.zshrc
-      ;;
-    debian)
-      sed -i "s/$install_alias/alias install='sudo apt install'/g" ~/.zshrc
-      sed -i "s/$remove_alias/alias remove='sudo apt remove'/g" ~/.zshrc
-      sed -i "s/$update_alias/alias upgrade='sudo apt upgrade -y'/g" ~/.zshrc
-      ;;
-    esac
-    handle_error $?
   fi
 fi
 
@@ -162,30 +142,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 echo
-read -p "${YELLOW}copying valgrind personnal configuration? [n]${NORMAL} " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  yes | cp -rf personnal_conf/dotfiles/.valgrindrc ~
-  yes | cp -rfv personnal_conf/dotfiles/.valgrind.suppress ~
-  sed -i "s/pmonnery/$USER/g" ~/.valgrindrc
-  handle_error $?
-fi
-
-echo
-read -p "${YELLOW}copying terminator personnal configuration? [y/n]${NORMAL} " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  mkdir -vp ~/.config/terminator
-  yes | cp -rf personnal_conf/dotfiles/.terminator_config ~/.config/terminator
-  handle_error $?
-fi
-
-echo
 read -p "${YELLOW}geneating ssh key and blih? [y/n]${NORMAL} " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   ssh-keygen
-  curl https://raw.githubusercontent.com/Epitech/dump/master/blih.py >personnal_conf/scripts/blih
+  curl https://raw.githubusercontent.com/Epitech/dump/master/blih.py > personnal_conf/scripts/blih
   sudo cp personnal_conf/scripts/blih /usr/bin/blih
   handle_error $?
   sudo chmod 755 /usr/bin/blih
@@ -209,16 +170,4 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 echo
-read -p "${YELLOW}download tek1 projets? [y/n]${NORMAL} " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  mkdir ~/Delivery/tek2 -vp
-  cd ~/Delivery
-  wget 176.185.206.214:3000/files/tek1.tgz
-  tar -zxvf tek1.tgz
-  rm -fr tek1.tgz
-  handle_error $?
-fi
-
-echo
-read "${YELLOW}You can now use zsh${NORMAL}\n"
+read -p "${YELLOW}You can now use zsh${NORMAL} " -n 1 -r

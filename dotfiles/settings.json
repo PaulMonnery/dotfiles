@@ -1,6 +1,6 @@
 {
     "window.zoomLevel": 0,
-    "workbench.colorTheme": "Flatland Monokai",
+    "workbench.colorTheme": "Plastic",
     "editor.renderWhitespace": "all",
     "git.confirmSync": false,
     "editor.fontSize": 15,
@@ -8,11 +8,11 @@
     "editor.minimap.enabled": false,
     "explorer.confirmDragAndDrop": false,
     "workbench.startupEditor": "newUntitledFile",
-    "epitech-c-cpp-headers.username": "paul.monnery",
-    "epitech-c-cpp-headers.login": "paul.monnery",
+    "epitech-c-cpp-headers.username": "",
+    "epitech-c-cpp-headers.login": "",
     "epitech-c-cpp-headers.headerType": "post2017",
-    "epitech-c-cpp-headers.usePragmaOnce": false,
-    "epitech-c-cpp-headers.autoGenerateClasses": false,
+    "epitech-c-cpp-headers.usePragmaOnce": true,
+    "epitech-c-cpp-headers.autoGenerateClasses": true,
     "editor.rulers": [
         80
     ],
@@ -22,13 +22,27 @@
         "**/*.gcna": true
     },
     "window.menuBarVisibility": "toggle",
-    "search.location": "panel",
     "C_Cpp.updateChannel": "Insiders",
     "javascript.updateImportsOnFileMove.enabled": "always",
-    "editor.tabSize": 2,
     "explorer.confirmDelete": false,
     "java.configuration.checkProjectSettingsExclusions": false,
-    "gitlens.currentLine.enabled": false, // in modern version
+    "gitlens.currentLine.enabled": false,
     "gitlens.codeLens.authors.enabled": false,
     "gitlens.codeLens.recentChange.enabled": false,
+    "git.autofetch": true,
+    "[html]": {
+        "editor.defaultFormatter": "lonefy.vscode-JS-CSS-HTML-formatter"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "lonefy.vscode-JS-CSS-HTML-formatter"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.cursorSmoothCaretAnimation": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.snippetSuggestions": "top",
+    "C_Cpp.suggestSnippets": false,
+    "C_Cpp.clang_format_fallbackStyle": "{Language: Cpp, AccessModifierOffset: -4, AlignAfterOpenBracket: DontAlign, AlignConsecutiveAssignments: false, AlignConsecutiveDeclarations: false, AlignEscapedNewlines: Right, AlignOperands: false, AlignTrailingComments: true, AllowAllParametersOfDeclarationOnNextLine: true, AllowShortBlocksOnASingleLine: false, AllowShortCaseLabelsOnASingleLine: false, AllowShortFunctionsOnASingleLine: None, AllowShortIfStatementsOnASingleLine: false, AllowShortLoopsOnASingleLine: false, AlwaysBreakAfterDefinitionReturnType: None, AlwaysBreakAfterReturnType: None, AlwaysBreakBeforeMultilineStrings: false, AlwaysBreakTemplateDeclarations: false, BinPackArguments: true, BinPackParameters: true, BreakBeforeBinaryOperators: None, BreakBeforeBraces: Custom, BreakAfterJavaFieldAnnotations: false, BreakBeforeInheritanceComma: false, BreakBeforeTernaryOperators: true, BreakConstructorInitializersBeforeComma: false, BreakConstructorInitializers: AfterColon, BreakStringLiterals: true, ColumnLimit: 80, CommentPragmas: '^ IWYU pragma: ', CompactNamespaces: false, ConstructorInitializerAllOnOneLineOrOnePerLine: false, ConstructorInitializerIndentWidth: 4, ContinuationIndentWidth: 4, Cpp11BracedListStyle: true, DerivePointerAlignment: false, DisableFormat: false, ExperimentalAutoDetectBinPacking: false, FixNamespaceComments: true, IncludeIsMainRegex: '(Test)?$', IndentCaseLabels: true, IndentPPDirectives: AfterHash, IndentWidth: 4, IndentWrappedFunctionNames: false, JavaScriptQuotes: Single, JavaScriptWrapImports: true, KeepEmptyLinesAtTheStartOfBlocks: false, MacroBlockBegin: '', MacroBlockEnd: '', MaxEmptyLinesToKeep: 1, NamespaceIndentation: All, ObjCBlockIndentWidth: 2, ObjCSpaceAfterProperty: false, ObjCSpaceBeforeProtocolList: true, PenaltyBreakAssignment: 2, PenaltyBreakBeforeFirstCallParameter: 19, PenaltyBreakComment: 300, PenaltyBreakFirstLessLess: 120, PenaltyBreakString: 1000, PenaltyExcessCharacter: 1000000, PenaltyReturnTypeOnItsOwnLine: 60, PointerAlignment: Right, ReflowComments: true, SortIncludes: true, SortUsingDeclarations: true, SpaceAfterCStyleCast: false, SpaceAfterTemplateKeyword: true, SpaceBeforeAssignmentOperators: true, SpaceBeforeParens: ControlStatements, SpaceInEmptyParentheses: false, SpacesBeforeTrailingComments: 1, SpacesInAngles: false, SpacesInContainerLiterals: false, SpacesInCStyleCastParentheses: false, SpacesInParentheses: false, SpacesInSquareBrackets: false, IncludeBlocks: Regroup, Standard: Cpp11, TabWidth: 4, UseTab: Never}",
 }
