@@ -122,6 +122,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     openssl enc -d -aes-256-cbc -in personnal_conf/dotfiles/.zsh_history -out ~/.zsh_history
     yes | cp -rfv personnal_conf/dotfiles/.gitconfig ~
+    yes | cp -rfv personnal_conf/dotfiles/.gitignore ~
     yes | cp -rfv personnal_conf/dotfiles/.zshrc ~
     yes | cp -rfv personnal_conf/dotfiles/.fzf.zsh ~
     yes | cp -rfv personnal_conf/dotfiles/.yarnrc ~
