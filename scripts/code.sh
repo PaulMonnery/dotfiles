@@ -23,7 +23,7 @@ read -p "${YELLOW}Is Visual Studio Code installed?${NORMAL} " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   for i in "${EXTENSIONS[@]}"; do
-    echo $i
+    code --install-extension $i
   done
   curl -fsSL https://raw.github.com/PaulMonnery/dotfiles/master/dotfiles/keybindings.json >~/.config/Code/User/keybindings.json
   curl -fsSL https://raw.github.com/PaulMonnery/dotfiles/master/dotfiles/settings.json >~/.config/Code/User/settings.json
