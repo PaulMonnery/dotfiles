@@ -117,6 +117,8 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "Could not install Oh My Zsh" >/dev/stderr
   }
   echo
+  git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
   read -p "${YELLOW}Importing zsh configuration's files? (requires openssl's decrypt's password) [n]${NORMAL} " -n 1 -r
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -125,7 +127,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     yes | cp -rfv dotfiles/dotfiles/.gitignore ~
     yes | cp -rfv dotfiles/dotfiles/.zshrc ~
     yes | cp -rfv dotfiles/dotfiles/.fzf.zsh ~
-    yes | cp -rfv dotfiles/dotfiles/.yarnrc ~
     curl https://raw.githubusercontent.com/AffanIndo/sunaku-zen/master/sunaku-zen.zsh-theme > ~/.oh-my-zsh/themes/sunaku-zen.zsh-theme
     sed -i "s/pmonnery/$USER/g" ~/.zshrc
   fi
@@ -152,15 +153,15 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   handle_error $?
   sudo chmod 755 /usr/bin/blih
   handle_error $?
+  echo
+  read -p "${YELLOW}uploading ssh key? [y/n]${NORMAL} " -n 1 -r
+  echo
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    blih -u $EPITECH_LOGIN@epitech.eu sshkey upload ~/.ssh/id_rsa.pub
+    handle_error $?
+  fi
 fi
 
-echo
-read -p "${YELLOW}uploading ssh key? [y/n]${NORMAL} " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  blih -u $EPITECH_LOGIN@epitech.eu sshkey upload ~/.ssh/id_rsa.pub
-  handle_error $?
-fi
 
 echo
 read -p "${YELLOW}updating packages? [y/n]${NORMAL} " -n 1 -r
@@ -171,4 +172,4 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 echo
-read -p "${YELLOW}You can now use zsh${NORMAL} " -n 1 -r
+read -p "${YELLOW}You can now use zsh ✅ ${NORMAL} " -n 1 -r
