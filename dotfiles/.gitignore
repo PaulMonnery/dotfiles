@@ -5,3 +5,8 @@ __pycache
 .env.prod
 .env.prod.db
 .vscode
+*.o
+*.a
+*~
+\#*#
+vgcore.*

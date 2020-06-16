@@ -92,7 +92,7 @@ script_init
 
 #########################################################################################################
 
-git clone https://github.com/PaulMonnery/personnal_conf.git
+git clone https://github.com/PaulMonnery/dotfiles.git
 
 read -p "${YELLOW}Is you epitech login ${GREEN}$EPITECH_LOGIN${YELLOW} ? [y/n]${NORMAL} " -n 1 -r
 echo
@@ -120,12 +120,12 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   read -p "${YELLOW}Importing zsh configuration's files? (requires openssl's decrypt's password) [n]${NORMAL} " -n 1 -r
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
-    openssl enc -d -aes-256-cbc -in personnal_conf/dotfiles/.zsh_history -out ~/.zsh_history
-    yes | cp -rfv personnal_conf/dotfiles/.gitconfig ~
-    yes | cp -rfv personnal_conf/dotfiles/.gitignore ~
-    yes | cp -rfv personnal_conf/dotfiles/.zshrc ~
-    yes | cp -rfv personnal_conf/dotfiles/.fzf.zsh ~
-    yes | cp -rfv personnal_conf/dotfiles/.yarnrc ~
+    openssl enc -d -aes-256-cbc -in dotfiles/dotfiles/.zsh_history -out ~/.zsh_history
+    yes | cp -rfv dotfiles/dotfiles/.gitconfig ~
+    yes | cp -rfv dotfiles/dotfiles/.gitignore ~
+    yes | cp -rfv dotfiles/dotfiles/.zshrc ~
+    yes | cp -rfv dotfiles/dotfiles/.fzf.zsh ~
+    yes | cp -rfv dotfiles/dotfiles/.yarnrc ~
     curl https://raw.githubusercontent.com/AffanIndo/sunaku-zen/master/sunaku-zen.zsh-theme > ~/.oh-my-zsh/themes/sunaku-zen.zsh-theme
     sed -i "s/pmonnery/$USER/g" ~/.zshrc
   fi
@@ -135,10 +135,10 @@ echo
 read -p "${YELLOW}copying emacs personnal configuration? [y/n]${NORMAL} " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  tar -zxvf personnal_conf/dotfiles/.emacs.d.tgz
-  mv .emacs.d personnal_conf/dotfiles
-  yes | cp -rf personnal_conf/dotfiles/.emacs.d ~
-  yes | cp -rfv personnal_conf/dotfiles/.emacs ~
+  tar -zxvf dotfiles/dotfiles/.emacs.d.tgz
+  mv .emacs.d dotfiles/dotfiles
+  yes | cp -rf dotfiles/dotfiles/.emacs.d ~
+  yes | cp -rfv dotfiles/dotfiles/.emacs ~
   handle_error $?
 fi
 
@@ -147,8 +147,8 @@ read -p "${YELLOW}geneating ssh key and blih? [y/n]${NORMAL} " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   ssh-keygen
-  curl https://raw.githubusercontent.com/Epitech/dump/master/blih.py > personnal_conf/scripts/blih
-  sudo cp personnal_conf/scripts/blih /usr/bin/blih
+  curl https://raw.githubusercontent.com/Epitech/dump/master/blih.py > dotfiles/scripts/blih
+  sudo cp dotfiles/scripts/blih /usr/bin/blih
   handle_error $?
   sudo chmod 755 /usr/bin/blih
   handle_error $?

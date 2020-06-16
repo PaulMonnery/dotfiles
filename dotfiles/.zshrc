@@ -3,7 +3,14 @@ zsh$ gclone() {git clone git@git.epitech.eu:/paul.monnery@epitech.eu/"$1" ; cd "
 zsh$ gitclone() {git clone git@git.epitech.eu:/"$1"@epitech.eu/"$2" ; cd "$2"}
 zsh$ rename() {for foo in *."$1"; do mv $foo `basename $foo ."$1"`."$2"; done}
 zsh$ tarc() {tar -zcvf "$1".tgz "$1"}
+zsh$ zipc() {zip "$1".tgz "$1"}
 zsh$ rdm () {pandoc "$1" | lynx -stdin}
+zsh$ testing () {cd /tmp && git clone "$1" project && cd project && code . && cd -2}
+zsh$ my_reboot_to_windows () {
+    WINDOWS_TITLE=`grep -i 'windows' /boot/grub/grub.cfg|cut -d"'" -f2`
+    sudo grub-reboot "$WINDOWS_TITLE"
+    sudo reboot
+}
 
 #git
 alias pull='git pull'
@@ -21,6 +28,7 @@ alias stasha='git stash apply'
 alias repartition="git ls-files | xargs -n1 git blame --line-porcelain | sed -n 's/^author //p' | sort -f | uniq -ic | sort -nr"
 
 #utils
+alias fd="fdfind"
 alias see='subl'
 alias size='du -sh'
 alias sn="sudo nano"
@@ -44,10 +52,11 @@ alias speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/m
 alias xat='bat --decorations never'
 alias len="xclip -o | wc -c"
 alias t="tree"
-alias lz="sudo lazydocker"
-alias tek="cd /home/pmonnery/Delivery/tek2"
+alias lz="lazydocker"
+alias tek="cd $HOME/Delivery/tek2"
 alias cs="cd \`fd -H -t d . | fzf\`"
 alias fe='emacs -nw $(fzf)'
+alias pipin="pip3 install --user"
 
 #youtube
 alias yt-dl='youtube-dl --no-playlist --restrict-filenames --audio-quality 0 --extract-audio --audio-format mp3 --exec '\''mv {} ~/Downloads/'\'
@@ -56,14 +65,20 @@ alias yt-dl-list='youtube-dl --restrict-filenames --audio-quality 0 --extract-au
 alias yt-dl-list-mp4='youtube-dl --restrict-filenames --audio-quality 0 --format mp4 --exec '\''mv {} ~/Downloads/'\'
 
 #package manager
-alias install='sudo dnf install'
-alias remove='sudo dnf remove'
-alias upgrade='sudo dnf upgrade'
+alias install='sudo apt install'
+alias remove='sudo apt remove'
+alias upgrade='sudo apt update && sudo apt upgrade'
 
 #vpn
 alias vpn='nordvpn'
 alias vpnc='nordvpn connect'
 alias vpnd='nordvpn disconnect'
+
+#ssh
+alias sshaws='ssh -i "~/.ssh/aws.pem" ubuntu@?.amazonaws.com'
+alias sshgloth='ssh -i "~/.ssh/gloth_ubuntu" ubuntu@gloth.fr'
+alias sshserv="ssh -i ~/.ssh/server_key paul@polflix.media"
+alias sshservlocal="ssh -i ~/.ssh/server_key paul@192.168.1.47"
 
 #manipulation
 alias rm='rm -iv'
@@ -88,6 +103,7 @@ alias gpp="g++ -Wall -Wextra"
 
 #docker
 alias mouli='sudo docker run --net=host --rm -it -v $PWD:/home/ -w /home -e DISPLAY=:0 epitechcontent/epitest-docker zsh'
+alias graphical_mouli='docker run -it --rm -u "$(id -u $USER):$(id -g $USER)" -e "DISPLAY" -v "/tmp/.X11-unix:/tmp/.X11-unix:rw" -v $PWD:/home/ -w /home  epitechcontent/epitest-docker zsh'
 alias dsa="sudo docker start"
 alias dso="sudo docker stop"
 alias dls="sudo docker container ls"
@@ -97,33 +113,32 @@ export EDITOR="emacs -nw"
 export QT_LOGGING_RULES='*=false'
 export GOPATH=$HOME/.go
 export ANDROID_HOME=$HOME/.Android
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
 
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/.local/bin
-
-export GEM_PATH=/home/pmonnery/.local/bin
-export GEM_HOME=/home/pmonnery/.local/bin
-
+export GEM_PATH=$HOME/.local/bin
+export GEM_HOME=$HOME/.local/bin
 export NLTK_DATA=$HOME/.nltk_data
 export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border'
 export FZF_DEFAULT_COMMAND='fd --type f -H'
 #export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 #zsh
-export ZSH="/home/pmonnery/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="sunaku-zen"
-plugins=(git web-search zsh-completions zsh-autosuggestions)
+plugins=(git web-search colored-man-pages zsh-autosuggestions zsh-completions)
 autoload -U compinit && compinit
+eval "$(direnv hook zsh)"
 source $ZSH/oh-my-zsh.sh
-
 
 alias ls="exa"
 alias LS="/bin/ls --color=auto"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 
 #ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"

@@ -38,6 +38,10 @@
         "key": "ctrl+alt+t",
         "command": "trailing-spaces.deleteTrailingSpaces"
     },
+    {
+        "key": "ctrl+shift+[Backquote]",
+        "command": "workbench.action.terminal.new"
+    },
 
 ]
     // {
