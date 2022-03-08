@@ -6,7 +6,7 @@
 <Details><Summary><strong>Full command</strong></Summary>
 
 ```sh
-sudo apt update && sudo apt install -y zsh git wget curl direnv emacs
+sudo apt update && sudo apt install -y zsh git wget curl emacs direnv fd-find bat python3-pip
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 chsh -s /bin/zsh -$USER
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
@@ -26,7 +26,7 @@ Run theses installations steps:
 
 Apt
 ```sh
-sudo apt update && sudo apt install -y zsh git wget curl direnv emacs
+sudo apt update && sudo apt install -y zsh git wget curl emacs direnv fd-find bat python3-pip
 ```
 
 Zsh & Oh my zsh
